@@ -15,7 +15,7 @@ mdBook preprocessor to add hover hints (tooltips) to your book. Markdown is supp
 -additional-js = []
 +additional-js = ["./theme/hints.js"]
 ```
-4. Add following line to `book.toml`
+4. Add following line in `book.toml`
 ```toml
 [preprocessor.hints]
 ```
