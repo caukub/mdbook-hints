@@ -5,6 +5,7 @@ edition = "2021"
 authors = ["caukub"]
 license = "MIT"
 license-file = "LICENSE"
+description = "mdBook preprocessor to add hover hints to your book"
 
 [dependencies]
 clap = { version = "4.5.14", features = ["derive"] }
