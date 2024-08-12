@@ -6,6 +6,7 @@ authors = ["caukub"]
 license = "MIT"
 license-file = "LICENSE"
 description = "mdBook preprocessor to add hover hints to your book"
+exclude = ["/assets", "/theme", "hints.toml", "README.md"]
 
 [dependencies]
 clap = { version = "4.5.14", features = ["derive"] }
