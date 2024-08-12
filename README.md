@@ -1,7 +1,7 @@
 # mdbook-hints
 mdBook preprocessor to add hover hints (tooltips) to your book. Markdown is supported.
 
-![mdbook-hints showcase](assets/showcase.gif)
+![mdbook-hints showcase](https://github.com/caukub/mdbook-hints/raw/main/assets/showcase.gif)
 
 ## Usage
 1. Install the binary using `cargo install mdbook-hints` command
