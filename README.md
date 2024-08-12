@@ -69,3 +69,7 @@ Generates following HTML
 <span class="hint" hint="cat">meow meow meow</span>
 ```
 Everything else is managed by the `/theme/hints.js` using [Tippy.js](https://atomiks.github.io/tippyjs/) library added in the `/theme/index.hbs` file. Styles are defined in the `/theme/hints.css` file.
+
+## TODO
+- [ ] automatically hint specified words
+- [ ] add support for custom classes
