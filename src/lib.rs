@@ -1,10 +1,10 @@
-use fancy_regex::Regex;
 use markdown::{to_html_with_options, CompileOptions, Options};
 use mdbook::{
     book::{Book, BookItem, Chapter},
     errors::Error,
     preprocess::PreprocessorContext,
 };
+use regex::Regex;
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::BufWriter;
@@ -62,11 +62,11 @@ fn _render_auto(_chapter: &mut Chapter, _hints: &HashMap<String, HintEntry>) -> 
 }
 
 fn render_manual(chapter: &mut Chapter, hints: &HashMap<String, HintEntry>) -> Result<(), Error> {
-    let re = Regex::new(r"\[((?:(?!]\().)*?)]\(~(.*?)\)")?;
+    let re = Regex::new(r"\[([^]]+)]\(~(.*?)\)")?;
 
-    if re.is_match(&chapter.content)? {
+    if re.is_match(&chapter.content) {
         let content = re
-            .replace_all(&chapter.content, |caps: &fancy_regex::Captures| {
+            .replace_all(&chapter.content, |caps: &regex::Captures| {
                 let first_capture = &caps[1];
                 let second_capture = &caps[2];
 

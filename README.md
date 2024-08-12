@@ -29,7 +29,7 @@ mdBook preprocessor to add hover hints (tooltips) to your book. Markdown is supp
 ```
 6. Create `hints.toml` file in the book root directory (same location where the `book.toml` lives)
 
-Now you can your hints:
+Now you can add your hints:
 ```toml
 # hints.toml
 [cat]
