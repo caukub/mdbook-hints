@@ -1,12 +1,14 @@
 [package]
 name = "mdbook-hints"
-version = "0.1.3"
-edition = "2021"
+version = "0.1.4"
 authors = ["caukub"]
-license = "MIT"
-license-file = "LICENSE"
+edition = "2021"
+
 description = "mdBook preprocessor to add hover hints to your book"
+repository = "https://github.com/caukub/mdbook-hints/"
+license = "MIT"
 exclude = ["/assets", "/theme", "hints.toml", "README.md"]
+keywords = ["mdbook", "preprocessor", "hints", "tooltip"]
 
 [dependencies]
 clap = { version = "4.5.14", features = ["derive"] }
