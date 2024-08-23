@@ -1,6 +1,6 @@
 [package]
 name = "mdbook-hints"
-version = "0.1.4"
+version = "0.1.5"
 authors = ["caukub"]
 edition = "2021"
 

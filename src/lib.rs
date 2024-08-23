@@ -5,7 +5,7 @@ use mdbook::{
     preprocess::PreprocessorContext,
 };
 use regex::Regex;
-use std::collections::HashMap;
+use std::collections::{BTreeMap};
 use std::fs::File;
 use std::io::BufWriter;
 use std::path::{Path, PathBuf};
@@ -52,16 +52,16 @@ struct HintEntry {
     _auto: Option<Vec<String>>,
 }
 
-fn render_hints(chapter: &mut Chapter, hints: HashMap<String, HintEntry>) -> Result<(), Error> {
+fn render_hints(chapter: &mut Chapter, hints: BTreeMap<String, HintEntry>) -> Result<(), Error> {
     render_manual(chapter, &hints)?;
     //render_auto(chapter, &hints)?;
     Ok(())
 }
-fn _render_auto(_chapter: &mut Chapter, _hints: &HashMap<String, HintEntry>) -> Result<(), Error> {
+fn _render_auto(_chapter: &mut Chapter, _hints: &BTreeMap<String, HintEntry>) -> Result<(), Error> {
     todo!()
 }
 
-fn render_manual(chapter: &mut Chapter, hints: &HashMap<String, HintEntry>) -> Result<(), Error> {
+fn render_manual(chapter: &mut Chapter, hints: &BTreeMap<String, HintEntry>) -> Result<(), Error> {
     let re = Regex::new(r"\[([^]]+)]\(~(.*?)\)")?;
 
     if re.is_match(&chapter.content) {
@@ -103,17 +103,17 @@ impl HintsExtractor {
         let path = std::env::current_dir().unwrap();
         Self { path }
     }
-    fn toml(&self) -> Result<HashMap<String, HintEntry>, Error> {
+    fn toml(&self) -> Result<BTreeMap<String, HintEntry>, Error> {
         let hints = self.path.join("hints.toml");
         let hints = std::fs::read_to_string(hints)?;
 
-        let toml: HashMap<String, HintEntry> = toml::from_str(&hints)?;
+        let toml: BTreeMap<String, HintEntry> = toml::from_str(&hints)?;
 
         Ok(toml)
     }
 
     fn output_json(&self, src_path: &Path) -> Result<(), Error> {
-        let mut json: HashMap<String, String> = HashMap::new();
+        let mut json: BTreeMap<String, String> = BTreeMap::new();
 
         for (name, entry) in self.toml()? {
             let mut hint = to_html_with_options(
